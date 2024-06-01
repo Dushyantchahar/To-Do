@@ -1,0 +1,26 @@
+# Stage 1: Build the Nuxt.js application
+FROM node:18 AS builder
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+# Stage 2: Setup the runtime environment
+FROM node:18
+
+WORKDIR /app
+
+# Copy the build output to serve it statically
+COPY --from=builder /app/.output ./.output
+COPY --from=builder /app/package*.json ./
+
+# Expose the port your app runs on
+EXPOSE 3000
+
+# Start the application in production mode
+# CMD ["npm", "run", "start"]
+
+ENTRYPOINT ["node", ".output/server/index.mjs"]
+

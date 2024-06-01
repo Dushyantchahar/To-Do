@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  nuxt-frontend:
+    build: 
+      context: ./path-to-your-nuxt-app
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - API_URL=http://spring-backend:8080
+    depends_on:
+      - spring-backend
+
+  spring-backend:
+    build:
+      context: ./path-to-your-spring-boot-app
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"

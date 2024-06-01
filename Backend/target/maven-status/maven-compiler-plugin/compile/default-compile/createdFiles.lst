@@ -1,0 +1,7 @@
+com\example\ToDo\config\WebConfig$1.class
+com\example\ToDo\services\TaskService.class
+com\example\ToDo\models\Task.class
+com\example\ToDo\controllers\TaskController.class
+com\example\ToDo\repo\TaskRepository.class
+com\example\ToDo\ToDoApplication.class
+com\example\ToDo\config\WebConfig.class
